@@ -67,13 +67,14 @@ You can perform inference on video files using the provided script. The script a
 
 ### Basic Inference
 ```bash
-uv run ffnet_inference.py -i <input_video> -o <output_video>
+python ffnet-inference.py -i <input_video> -o /workspace/<output_video>
 ```
 
 For example:
 ```bash
-uv run ffnet_inference.py -i example.mp4 -o output.mp4 
+python ffnet-inference.py -i example.mp4 -o /workspace/output.mp4
 ```
+You can view the output video in the host directory where the script is located.
 
 ### Advanced Options
 | Argument | Description | Default |
@@ -94,8 +95,8 @@ Expected output:
 ```text
 Exited container. Cleaning up...
 [+] Running 2/2
- ✔ Container onnxruntime-on-qualcomm-hexagon       Removed                                                                                 10.4s 
- ✔ Network onnxruntime-on-qualcomm-hexagon_default  Removed  
+ ✔ Container ffnet-real-time-semantic-segmentation-on-qualcomm-hexagon       Removed                                                                                 10.4s 
+ ✔ Network ffnet-real-time-semantic-segmentation-on-qualcomm-hexagon_default  Removed  
 ```
 
 
