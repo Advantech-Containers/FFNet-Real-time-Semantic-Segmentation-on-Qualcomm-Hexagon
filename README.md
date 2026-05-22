@@ -74,7 +74,7 @@ For example:
 ```bash
 python ffnet-inference.py -i example.mp4 -o /workspace/output.mp4
 ```
-You can view the output video in the host directory where the script is located.
+You can view the output video in the host project directory `FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main`.
 
 ### Advanced Options
 | Argument | Description | Default |
