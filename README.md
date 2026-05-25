@@ -12,7 +12,7 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
 
 ## 1. Hardware Specifications
 > [!NOTE]
-> This container image is compatible with Advantech AOM-2721 and Advantech AIR-055.
+> This container image is compatible with Advantech AOM-2721, Advantech AIR-055 and Advantech AFE-A503.
 
 | Component       | Specification      |
 |-----------------|--------------------|
@@ -28,7 +28,15 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
 | SoC             | Qualcomm® Dragonwing™ IQ-9075   |
 | GPU             | Qualcomm® Adreno™ 663        |
 | DSP             | Qualcomm® Hexagon™ (100 TOPs) |
-| Memory          | 36GB LPDDR5         |
+| Memory          | 32GB LPDDR5         |
+
+| Component       | Specification      |
+|-----------------|--------------------|
+| Target Hardware | [Advantech AFE-A503](https://www.advantech.com/zh-tw/products/8d5aadd0-1ef5-4704-a9a1-504718fb3b41/afe-a503/mod_12fdad30-7018-42b3-8d55-4b463f90166b) |
+| SoC             | Qualcomm® Dragonwing™ IQ-9075M   |
+| GPU             | Qualcomm® Adreno™ 663        |
+| DSP             | Qualcomm® Hexagon™ (100 TOPs) |
+| Memory          | 32GB LPDDR5         |
 
 ## 2. Software Components
 
@@ -118,6 +126,14 @@ Performance was measured on the Qualcomm HTP (Hexagon Tensor Processor). Quantiz
 | :---                      | :---:         | :---:             | :---: |
 | **ffnet_122ns_lowres**    | W8A8          | **166.51**         | NPU |
 | ffnet_122ns_lowres        | W8A8          | 18.30              | CPU |
+
+
+> Device:Advantech AFE-A503(Qualcomm IQ9050M)
+
+| Model Name                | Quantization  | Inference/s (FPS) | Acceleration |
+| :---                      | :---:         | :---:             | :---: |
+| **ffnet_122ns_lowres**    | W8A8          | **150.36**         | NPU |
+| ffnet_122ns_lowres        | W8A8          | 22.82              | CPU |
 
 ---
 
