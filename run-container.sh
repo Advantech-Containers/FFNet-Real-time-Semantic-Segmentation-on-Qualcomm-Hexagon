@@ -51,6 +51,7 @@ echo "Platform: $PLATFORM"
 echo "OS: $DISTRO"
 echo "Compose file: $COMPOSE_FILE"
 
+mkdir -p workspace
 
 # Detect docker compose command
 if command -v docker-compose >/dev/null 2>&1; then
