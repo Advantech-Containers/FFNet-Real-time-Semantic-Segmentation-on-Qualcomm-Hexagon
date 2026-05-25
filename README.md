@@ -1,4 +1,4 @@
-# FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon
+# FFNet Realtime Semantic Segmentation on Qualcomm® Hexagon™
 
 Experience ultra-fast semantic segmentation on Qualcomm platforms using FFNet. This project leverages **ONNX Runtime (QNN)** to achieve state-of-the-art performance for urban scene understanding.
 
