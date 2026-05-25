@@ -128,7 +128,7 @@ Performance was measured on the Qualcomm HTP (Hexagon Tensor Processor). Quantiz
 | ffnet_122ns_lowres        | W8A8          | 18.30              | CPU |
 
 
-> Device:Advantech AFE-A503(Qualcomm IQ9050M)
+> Device: AFE-A503(Qualcomm IQ9050M)
 
 | Model Name                | Quantization  | Inference/s (FPS) | Acceleration |
 | :---                      | :---:         | :---:             | :---: |
