@@ -40,6 +40,10 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
 
 ## 2. Software Components
 
+| Base Container        | Version |
+| --------------------- | ------- |
+| [onnxruntime-on-Qualcomm-Hexagon](https://github.com/Advantech-Containers/onnxruntime-on-Qualcomm-Hexagon)| v1   |
+
 | Component             | Version | Description                                                        |
 | --------------------- | ------- | ------------------------------------------------------------------ |
 | Ubuntu                | 22.04   | Guest OS                                                           |
@@ -47,6 +51,7 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
 | ONNX Runtime (QNN EP) | 1.24.1  | Custom build with QNN Execution Provider (Built with QAIRT 2.43.0) |
 | QAIRT (QNN SDK)       | 2.43.0  | Qualcomm AI Runtime backend library                                |
 | LiteRT                | 2.1.4   | Provides QNN TFLite Delegate support for GPU/NPU acceleration      |
+| Gstreamer             | 1.20.3  | Multimedia framework for building flexible audio/video pipelines   |
 
 **Note**: The custom build of `onnxruntime-qnn` currently only works within this container environment.
 
@@ -128,7 +133,7 @@ Performance was measured on the Qualcomm HTP (Hexagon Tensor Processor). Quantiz
 | ffnet_122ns_lowres        | W8A8          | 18.30              | CPU |
 
 
-> Device: AFE-A503(Qualcomm IQ9050M)
+> Device: AFE-A503 (Qualcomm IQ9050M)
 
 | Model Name                | Quantization  | Inference/s (FPS) | Acceleration |
 | :---                      | :---:         | :---:             | :---: |
