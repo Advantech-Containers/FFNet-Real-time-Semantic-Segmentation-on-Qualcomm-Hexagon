@@ -92,7 +92,7 @@ You can view the output video in the host project directory `FFNet-Real-time-Sem
 ### Advanced Options
 | Argument | Description | Default |
 | :--- | :--- | :--- |
-| `-i, --input` | Path to the input video | (Required) |
+| `-i, --input` | Path to the input video or camera path | (Required) |
 | `-o, --output` | Path to the output video | `output.mp4` |
 | `-m, --model` | Path to the ONNX model | `models/.../model.onnx` |
 

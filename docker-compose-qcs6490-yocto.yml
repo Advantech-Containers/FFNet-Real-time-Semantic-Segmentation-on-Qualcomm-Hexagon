@@ -11,7 +11,10 @@ services:
     environment:
       - XDG_RUNTIME_DIR=/dev/socket/weston
       - WAYLAND_DISPLAY=wayland-1
+    device_cgroup_rules:
+      - 'c 81:* rmw'
     devices:
+      - /dev:/dev
       - /dev/dri/card0
       - /dev/dri/renderD128
       - /dev/kgsl-3d0
@@ -21,12 +24,8 @@ services:
       - /dev/fastrpc-adsp-secure
       - /dev/video32
       - /dev/video33
-      - /dev/video0
-      - /dev/video1
-      # - /dev/video2
-      # - /dev/video3
-
     volumes:
+      - /dev:/dev
       # --- Adreno GPU / OpenCL ---
       - /usr/lib/libCB.so:/usr/lib/libCB.so
       - /usr/lib/libOpenCL.so:/usr/lib/libOpenCL.so
