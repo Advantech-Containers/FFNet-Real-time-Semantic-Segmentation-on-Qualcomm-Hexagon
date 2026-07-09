@@ -61,14 +61,15 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
 ---
 #### Option 1: Auto Script
 1. Download repo and copy the project files to device
-    ![alt text](image.png)
-2. Unzip files and setup permission with following commands:
+
+   ![alt text](image.png)
+3. Unzip files and setup permission with following commands:
     ```bash
     unzip FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main.zip
     chmod +x -R FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main
     cd FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main
     ```
-3. launch the container
+4. launch the container
     ```bash
     ./run-container
     ```
