@@ -75,7 +75,7 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
     ```
 ---
 #### Option 2: Manual Setup
-1. Copy the docker compose files acording to your device and platform
+1. Copy the Docker Compose file that matches your device and platform directly
 - `docker-compose-qcs6490-yocto.yml`: Advantech AOM-2721
 - `docker-compose-qcs9075-ubuntu.yml`: Advantech AIR-055, Advantech AFE-A503
 
