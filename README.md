@@ -56,23 +56,39 @@ This document describes how to validate the Qualcomm NPU-enabled ONNX Runtime co
 **Note**: The custom build of `onnxruntime-qnn` currently only works within this container environment.
 
 ## 3. Run Container
-Clone the project:
-- On the PC
-```bash
-git clone https://github.com/Advantech-Containers/FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon.git
-scp -r ./FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main\ <username>@<development-board-ip>:/home/<username>/
-```
-- On AOM-2721 / AIR-055
-```bash
-chmod +x -R FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main
-cd FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main
-```
 
-Start the container:
-```bash
-./run-container.sh
-```
-This script launches the container and opens an interactive shell.
+### Develop on device
+---
+#### Option 1: Auto Script
+1. Download repo and copy the project files to device
+    ![alt text](image.png)
+2. Unzip files and setup permission with following commands:
+    ```bash
+    unzip FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main.zip
+    chmod +x -R FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main
+    cd FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main
+    ```
+3. launch the container
+    ```bash
+    ./run-container
+    ```
+---
+#### Option 2: Manual Setup
+1. Copy the docker compose files acording to your device and platform
+- `docker-compose-qcs6490-yocto.yml`: Advantech AOM-2721
+- `docker-compose-qcs9075-ubuntu.yml`: Advantech AIR-055, Advantech AFE-A503
+
+2. Launch the container
+    For QCS6490 Yocto devices, such as Advantech AOM-2721:
+    ```bash
+    docker compose -f docker-compose-qcs6490-yocto.yml up -d
+    ```
+
+    For IQ9075 Ubuntu devices, such as Advantech AIR-055 or Advantech AFE-A503:
+    ```bash
+    docker compose -f docker-compose-qcs9075-ubuntu.yml up -d
+    ```
+
 
 ## 4. Usage (FFNet Inference)
 
@@ -80,14 +96,23 @@ You can perform inference on video files using the provided script. The script a
 
 ### Basic Inference
 ```bash
-python ffnet-inference.py -i <input_video> -o /workspace/<output_video>
+python ffnet-inference.py -i <input_video> -o /workspace/<output_video> --gst-sink <gst-sink>
 ```
 
-For example:
+For example, to run inference on a video file and save the segmentation result:
+
+- QCS6490
 ```bash
-python ffnet-inference.py -i example.mp4 -o /workspace/output.mp4
+python ffnet-inference.py -i example.mp4 -o /workspace/output.mp4 --gst-sink glimagesink
+```
+
+- IQ9
+```bash
+python ffnet-inference.py -i example.mp4 -o /workspace/output.mp4 --gst-sink waylandsink
 ```
 You can view the output video in the host project directory `FFNet-Real-time-Semantic-Segmentation-on-Qualcomm-Hexagon-main/workspace`.
+
+
 
 ### Advanced Options
 | Argument | Description | Default |
@@ -95,6 +120,16 @@ You can view the output video in the host project directory `FFNet-Real-time-Sem
 | `-i, --input` | Path to the input video or camera path | (Required) |
 | `-o, --output` | Path to the output video | `output.mp4` |
 | `-m, --model` | Path to the ONNX model | `models/.../model.onnx` |
+| `--target-width` | Model and display processing width. | `1024` |
+| `--target-height` | Model and display processing height. | `512` |
+| `--cam-width` | Camera capture width for `/dev/video*` input. | `1280` |
+| `--cam-height` | Camera capture height for `/dev/video*` input. | `720` |
+| `--cam-fps` | Camera capture FPS for `/dev/video*` input. | `30` |
+| `--cam-format` | Camera FourCC format. Supported values are `MJPG`, `YUYV`, and `YUY2`. | `MJPG` |
+| `--no-display` | Disable GStreamer UI display. | Disabled by default |
+| `--no-save` | Disable output video writing. | Disabled by default |
+| `--gst-sink` | GStreamer video sink used for display. For QCS6490 select `glimagesink`, for IQ9 select `waylandsink` | `glimagesink` |
+| `--gst-sync` | Enable GStreamer sink synchronization. By default, sync is disabled to reduce display latency. | Disabled |
 
 ---
 
