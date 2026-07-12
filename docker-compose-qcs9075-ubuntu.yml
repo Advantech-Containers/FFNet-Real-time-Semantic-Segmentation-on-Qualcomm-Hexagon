@@ -3,7 +3,7 @@ services:
     image: harbor.edgesync.cloud/nycu-cosmos-lab/ffnet-real-time-semantic-segmentation-on-qualcomm-hexagon:v1
     container_name: ffnet-real-time-semantic-segmentation-on-qualcomm-hexagon
     hostname: ffnet-real-time-semantic-segmentation-on-qualcomm-hexagon
-    privileged: false
+    privileged: true
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -41,9 +41,7 @@ services:
       - /usr/lib/aarch64-linux-gnu/libvmmem.so.0:/usr/lib/libvmmem.so.0
       - /usr/lib/aarch64-linux-gnu/libpropertyvault.so.0:/usr/lib/libpropertyvault.so.0
       # --- Weston / X11 ---
-      - /etc/xdg/weston:/etc/xdg/weston
       - /usr/share/X11:/usr/share/X11
-      - /dev/socket/weston:/dev/socket/weston
       - ${XDG_RUNTIME_DIR}:${XDG_RUNTIME_DIR}
       # --- User Data ---
       - ./workspace:/workspace/
